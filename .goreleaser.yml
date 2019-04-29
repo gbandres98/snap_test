@@ -1,0 +1,4 @@
+snapcraft:
+  summary: Snap test
+  publish: true
+  description: Snap test!
