@@ -8,7 +8,7 @@ env:
 - PATH=/snap/bin:$PATH
 install:
 - sudo snap install snapcraft --classic
-script: go run
+script: go build
 after_success:
 - test -n "$TRAVIS_TAG" && snapcraft login --with snap.login
 deploy:
