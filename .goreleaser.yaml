@@ -1,0 +1,5 @@
+snapcraft:
+  summary: Hello World
+  publish: true # <- this line
+  description: |
+    Hello World!

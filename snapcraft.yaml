@@ -1,6 +1,7 @@
 name: gohelloworldbabel
 version: git
-summary: Hello World
+summary: |
+  Hello World
 description: : Hello World!
 
 grade: devel
