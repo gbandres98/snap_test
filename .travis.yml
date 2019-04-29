@@ -13,6 +13,7 @@ after_success:
 - test -n "$TRAVIS_TAG" && snapcraft login --with snap.login
 deploy:
 - provider: script
+  all_branches: true
   skip_cleanup: true
   script: curl -sL http://git.io/goreleaser | bash
 before_install:
