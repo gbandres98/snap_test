@@ -1,0 +1,17 @@
+name: gohelloworldbabel
+version: git
+summary: Hello World
+description: : Hello World!
+
+grade: devel
+confinement: devmode
+
+parts:
+  gohelloworldbabel:
+    source: .
+    plugin: go
+    go-importpath: github.com/gbandres98/snap_test
+
+apps:
+  gohelloworldbabel:
+    command: gohelloworldbabel
