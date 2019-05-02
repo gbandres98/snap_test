@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-var path = filepath.FromSlash(fmt.Sprint(os.Getenv("SNAP_DATA"), "/dummy.log"))
+var path = filepath.FromSlash(fmt.Sprint(os.Getenv("SNAP_USER_DATA"), "/dummy.log"))
 
 func init() {
 	fmt.Println(path)
