@@ -1,5 +1,6 @@
 language: go
 go: 1.11.x
+dist: xenial
 addons:
   apt:
     packages:
@@ -12,12 +13,10 @@ script: go build
 after_success:
 - test -n "$TRAVIS_TAG" && snapcraft login --with snap.login
 deploy:
-- provider: script
-  all_branches: true
+  - provider: snap
+    snap: gohelloworldbabel
+    channel: edge
   skip_cleanup: true
-  script: curl -sL http://git.io/goreleaser | bash
-  on:
-    tags: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_df3f5eff0f94_key -iv $encrypted_df3f5eff0f94_iv
   -in snap.login.enc -out snap.login -d
