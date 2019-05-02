@@ -15,3 +15,7 @@ apps:
   gohelloworldbabel:
     daemon: simple
     command: gohelloworldbabel
+
+plugs:
+  network:
+  network-bind:
