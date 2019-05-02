@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"time"
@@ -14,18 +15,16 @@ func init() {
 }
 
 func main() {
-	file, err := os.Open(path)
+	file, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0)
 
 	if err != nil {
-		file, err = os.Create(path)
-
-		if err != nil {
-			fmt.Println(err)
-		}
+		log.Fatal(err)
 	}
 	defer file.Close()
 
-	line := fmt.Sprint(time.Now(), " - Snap: ", os.Getenv("SNAP_NAME"), " - Ver: ", os.Getenv("SNAP_REVISION"))
+	line := fmt.Sprintln(time.Now(), " - Snap: ", os.Getenv("SNAP_NAME"), " - Ver: ", os.Getenv("SNAP_REVISION"))
 	fmt.Println(line)
-	_, _ = file.WriteString(line)
+	if _, err := file.WriteString(line); err != nil {
+		log.Fatal(err)
+	}
 }

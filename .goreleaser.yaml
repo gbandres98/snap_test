@@ -1,4 +1,0 @@
-snapcraft:
-  summary: Test app
-  publish: true
-  description: Test app!
