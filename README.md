@@ -1,4 +1,1 @@
 # snap_test
-  
-
-
