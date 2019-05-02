@@ -13,9 +13,9 @@ script: go build
 after_success:
 - test -n "$TRAVIS_TAG" && snapcraft login --with snap.login
 deploy:
-  - provider: snap
-    snap: gohelloworldbabel
-    channel: edge
+  provider: snap
+  snap: gohelloworldbabel
+  channel: edge
   skip_cleanup: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_df3f5eff0f94_key -iv $encrypted_df3f5eff0f94_iv
