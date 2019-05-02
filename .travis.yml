@@ -9,7 +9,10 @@ env:
 install:
 - sudo snap install snapcraft --classic
 script:
-  - go build
-  - snapcraft
-  - snapcraft login --with snap.login
-  - snapcraft push --release=edge gohelloworldbabel*.snap
+- go build
+- snapcraft
+- snapcraft login --with snap.login
+- snapcraft push --release=edge gohelloworldbabel*.snap
+before_install:
+- openssl aes-256-cbc -K $encrypted_df3f5eff0f94_key -iv $encrypted_df3f5eff0f94_iv
+  -in snap.login.enc -out snap.login -d
