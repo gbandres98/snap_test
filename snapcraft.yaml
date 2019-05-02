@@ -2,7 +2,6 @@ name: gohelloworldbabel
 version: git
 summary: Hello World
 description: Hello World!
-
 grade: devel
 confinement: strict
 
@@ -14,4 +13,5 @@ parts:
 
 apps:
   gohelloworldbabel:
+    daemon: simple
     command: gohelloworldbabel
