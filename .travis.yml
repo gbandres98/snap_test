@@ -1,6 +1,5 @@
 language: go
 go: 1.11.x
-dist: xenial
 addons:
   apt:
     packages:
@@ -9,9 +8,12 @@ env:
 - PATH=/snap/bin:$PATH
 install:
 - sudo snap install snapcraft --classic
-script: snapcraft
-deploy:
-  provider: snap
-  snap: gohelloworldbabel
-  channel: edge
-  skip_cleanup: true
+script:
+  - go build
+  - snapcraft
+  - snapcraft login --with snap.login
+  - snapcraft push --release=edge gohelloworldbabel*.snap
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_df3f5eff0f94_key -iv $encrypted_df3f5eff0f94_iv
+    -in snap.login.enc -out snap.login -d
