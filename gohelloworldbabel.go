@@ -8,11 +8,8 @@ import (
 	"log"
 	"mime/multipart"
 	"net/http"
-	"net/http/httptest"
-	"net/http/httputil"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 )
 
@@ -86,26 +83,13 @@ func writeFile() error {
 }
 
 func uploadFile() error {
-	var client *http.Client
-	{
-		//setup a mocked http client.
-		ts := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			b, err := httputil.DumpRequest(r, true)
-			if err != nil {
-				panic(err)
-			}
-			fmt.Printf("%s", b)
-		}))
-		defer ts.Close()
-		client = ts.Client()
-	}
+	var client http.Client
 
 	//prepare the reader instances to encode
 	values := map[string]io.Reader{
-		"file":  mustOpen(path), // lets assume its this file
-		"other": strings.NewReader("hello world!"),
+		"file": mustOpen(path),
 	}
-	err := upload(client, values)
+	err := upload(&client, values)
 	if err != nil {
 		panic(err)
 	}
