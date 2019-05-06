@@ -129,7 +129,7 @@ func upload(client *http.Client, values map[string]io.Reader) (err error) {
 	_ = w.Close()
 
 	// Now that you have a form, you can submit it to your handler.
-	req, err := http.NewRequest("POST", fmt.Sprint("http://", os.Getenv("GO_SERVER"), ":8080/log/upload"), &b)
+	req, err := http.NewRequest("POST", "http://192.168.0.101:8080/log/upload", &b)
 	if err != nil {
 		return
 	}
